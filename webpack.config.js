@@ -1,8 +1,10 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const webpack= require('webpack');
+
 
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/index.ts',
     output:{
         filename:'main.bundle.js',
         // path:'C:/Users/VISURA/OneDrive/Desktop/DEP/Class/2020.11.24/Exercise/hello-webpack/dist',
@@ -29,6 +31,11 @@ module.exports = {
                 test: /\.html/,
                 use: ['html-loader']
             },
+            {
+                test:/[.]ts$/,
+                use:['ts-loader'],
+                exclude:/node_modules/
+            }
         ]
     },
     plugins: [
@@ -36,8 +43,16 @@ module.exports = {
         new HtmlWebpackPlugin({
             template:'./src/index.html'
         }),
+        new webpack.ProvidePlugin({
+            $:'jquery',
+            jQuery:'jquery'
+        })
         
     ],
-    
-   
+
+    resolve: {
+        extensions: ['.ts','.js']
+    }
+
+
 }

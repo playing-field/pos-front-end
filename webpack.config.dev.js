@@ -16,5 +16,5 @@ module.exports = merge(superConfig,{
             filename:'main.css'
         }),
     ],
-    // devtool:false
+    devtool:'inline-source-map'
 })
