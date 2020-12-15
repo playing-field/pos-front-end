@@ -1,6 +1,6 @@
 import { Item } from "../model/item";
 
-let items: Array<Item> = [];
+export let items: Array<Item> = [];
 
 
 /* export function getAllItems():Array<Item>{

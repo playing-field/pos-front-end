@@ -13,46 +13,7 @@ var html = '<style>' + style + '</style>';
 $("#dashboard").append(html);
 
 
-/* function loadAllCustomers():void{
-    let customers=getAllCustomers()
-    for(const customer of customers){
-        $('#tbl-customers').append(
-            `<tr>
-            <td>${customer.id}</td>
-            <td>${customer.name}</td>
-            <td>${customer.address}</td>
-            <td><i class="fas fa-trash"></i></td>
-            </tr>`
-        )
 
-    }
-} */
-
-
-/* function old_loadAllCustomers():void{
-    getAllCustomers().then(function(customers:Array<Customer>){
-        for(const customer of customers){
-            $('#tbl-customers').append(
-                `<tr>
-                <td>${customer.id}</td>
-                <td>${customer.name}</td>
-                <td>${customer.address}</td>
-                <td><i class="fas fa-trash"></i></td>
-                </tr>`
-            )
-
-        }
-        ($("#tbl-customers") as any).DataTable({
-            "info": false,
-            "searching": false,
-            "lengthChange": false,
-            "pageLength": 5,
-        });
-
-    }).catch(function(error){
-        console.log(error);
-    });
-} */
 
 
 let datatable: any = null;
@@ -117,8 +78,10 @@ $('#btn-save').click(async () => {
     try {
         await saveCustomer(new Customer(id, name, address));
         loadAllCustomers();
+        alert("Succefully saved")
     } catch (error) {
-        alert('Failed to save the customer')
+        alert('Failed to save the customer');
+
 
     }
 
@@ -131,7 +94,7 @@ $('#tbl-customers tbody').on('click', 'tr .fas', async (event: Event) => {
     try {
         await deleteCustomer(id);
         loadAllCustomers();
-        alert('delete Succeful');
+        alert('DELETE Succeful');
     } catch (error) {
         alert('Failed to delete customer')
     }

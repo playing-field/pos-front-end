@@ -6,5 +6,6 @@ import './../node_modules/admin-lte/dist/js/adminlte.js';
 
 
 
+
 import style from './style.scss';
 $('head').append('<style>'+style+'</style>');

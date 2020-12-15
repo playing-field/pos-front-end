@@ -2,6 +2,9 @@
 import app_component from './app.component.html';
 import app_component_scss from './app.component.scss';
 
+
+
+
 $('app-root').replaceWith('<div id="app-component">'+app_component+'</div>');
 $('head').append('<style>'+app_component_scss+'</style>');
 
@@ -31,6 +34,7 @@ $('#app-component .sidebar ul li a').click(function (){
             $('#manage-items').show();
             break;
         case "Place Orders":
+
             $('#place-orders').show();
             break;
         case "Search Orders":

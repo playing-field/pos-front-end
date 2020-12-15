@@ -26,7 +26,7 @@
                     <div class="col-lg-3">
                         <div class="form-group">
                             <label>Customer ID</label>
-                            <select class="form-control select2">
+                            <select class="form-control customers-select">
                                 <option selected="selected">C001</option>
                                 <option>C002</option>
                                 <option>C003</option>
@@ -40,12 +40,12 @@
 
                     <div class="col-lg-4">
                         <label>Customer Name</label>
-                        <input type="text" class="form-control" placeholder="ex: Visura Prabod">
+                        <input id="customerName" type="text" class="form-control" placeholder="ex: Visura Prabod">
                     </div>
 
                     <div class="col-lg-3">
                         <label>Address</label>
-                        <input type="text" class="form-control" disabled>
+                        <input id="customerAddress" type="text" class="form-control" disabled>
                     </div>
 
 
@@ -73,7 +73,7 @@
                     <div class="col-lg-2">
                         <div class="form-group">
                             <label>Item Code</label>
-                            <select class="form-control select2">
+                            <select class="form-control items-select">
                                 <option selected="selected">P001</option>
                                 <option>P002</option>
                                 <option>P003</option>
@@ -155,7 +155,7 @@
                 <div class="card">
 
                     <div class="card-body table-responsive p-0" style="height: 300px;">
-                        <table class="table table-head-fixed text-nowrap">
+                        <table class="table table-head-fixed text-nowrap table-bordered table-hover">
                             <thead class>
                             <tr>
                                 <th>#</th>

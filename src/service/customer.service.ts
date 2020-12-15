@@ -50,14 +50,10 @@ import { Customer } from "../model/customer";
     return customers;
 } */
 
-let customers: Array<Customer> = [];
 
-
+export let customers: Array<Customer> = [];
 let loaded = false;
-
-
 export function getAllCustomers(): Promise<Array<Customer>> {
-
     return new Promise((resolve, reject) => {
         if (!loaded) {
             /* let http = new XMLHttpRequest();
@@ -198,6 +194,22 @@ export function deleteCustomer(id: string): Promise<void> {
 
 
 
+
+    });
+}
+
+export function getCustomerById(id:string):Promise<Customer>{
+    return new Promise((resolve,reject)=>{
+
+        $.ajax({
+            method:'GET',
+            url:`http://localhost:8080/mypos/customers?id=${id}`,
+        }).then((data)=>{
+            resolve(data);
+        }).catch(()=>{
+            console.log('mkkk hari awualk wela');
+            reject();
+        });
 
     });
 }
