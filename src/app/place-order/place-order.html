@@ -40,7 +40,7 @@
 
                     <div class="col-lg-4">
                         <label>Customer Name</label>
-                        <input id="customerName" type="text" class="form-control" placeholder="ex: Visura Prabod">
+                        <input id="customerName" type="text" class="form-control" disabled>
                     </div>
 
                     <div class="col-lg-3">
@@ -88,17 +88,17 @@
 
                     <div class="col col-lg-3">
                         <label>Description</label>
-                        <input type="text" class="form-control" placeholder="ex: milo 450g ">
+                        <input style="font-weight: bolder; color: lightgreen" id="place-order-description"type="text" class="form-control" disabled>
                     </div>
 
                     <div class="col col-lg-2">
                         <label>Qty On Hand</label>
-                        <input type="text" class="form-control" disabled>
+                        <input id="place-order-qtyOnHand" type="text" class="form-control" disabled>
                     </div>
 
                     <div class="col col-lg-3">
                         <label>Unit Price</label>
-                        <input type="text" class="form-control" disabled>
+                        <input id="place-order-unitPrice"type="text" class="form-control" disabled>
                     </div>
 
                 </div>
@@ -110,7 +110,7 @@
                         <h1 class="card-title">Total</h1>
                     </div>
                     <div class="card-body">
-                        <h3>Rs : 1500.00</h3>
+                        <h3 id="cart-total">Rs : 0.00</h3>
                     </div>
 
                 </div>
@@ -123,12 +123,12 @@
         <div class="row">
             <div class="col col-lg-3">
                 <label style="color: red">QTY</label>
-                <input type="text" class="form-control" >
+                <input id="place-order-qty"type="text" class="form-control" >
             </div>
 
             <div class="col col-lg-5">
                 <div class="mt-4">
-                    <div class="btn btn-primary  btn-flat">
+                    <div id="btn-add-to-cart" class="btn btn-primary  btn-flat">
                         <i class="fas fa-cart-plus fa-lg mr-2"></i>
                         Add to Cart
                     </div>
@@ -155,7 +155,7 @@
                 <div class="card">
 
                     <div class="card-body table-responsive p-0" style="height: 300px;">
-                        <table class="table table-head-fixed text-nowrap table-bordered table-hover">
+                        <table id="tbl-cart"class="table table-head-fixed text-nowrap table-bordered table-hover">
                             <thead class>
                             <tr>
                                 <th>#</th>
@@ -270,3 +270,6 @@
 
 
 </div>
+
+
+
