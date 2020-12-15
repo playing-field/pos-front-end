@@ -1,5 +1,5 @@
 import './app.component';
-import './manage-customer/manage-customers';
+import './manage-customers/manage-customers';
 import './dashboard/dashboard';
 import './manage-items/manage-items';
 import './place-order/place-order';
