@@ -1,5 +1,4 @@
-import { ajax } from "jquery";
-import { resolve } from "../../webpack.config";
+
 import { Customer } from "../model/customer";
 
 

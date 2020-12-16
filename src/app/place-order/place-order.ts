@@ -6,6 +6,9 @@ import {Item} from "../../model/item";
 import {getAllItems} from "../../service/item.service";
 import {customers} from "../../service/customer.service";
 import {items} from "../../service/item.service";
+import {orders, saveOrder} from "../../service/order.service";
+import {OrderItem} from "../../model/orderItem";
+import {OrderInformaion} from "../../model/orderInformaion";
 
 
 $('app-place-orders').replaceWith('<div id="place-orders">' + html + '</div>');
@@ -17,6 +20,8 @@ function init() {
 
     loadAllItemCodes();
 
+    setTodayDate();
+
 
     //this is for developing purposes
     function clearAlreadyAddedCartItems() {
@@ -25,6 +30,16 @@ function init() {
 
     clearAlreadyAddedCartItems();
 }
+
+
+function setTodayDate() {
+    let tdate = new Date();
+    let currentDate= tdate.getFullYear() + "-" +( tdate.getMonth()+1) + "-" + tdate.getDate();
+    $('#place-order-date').val(currentDate);
+}
+
+
+
 
 async function loadAllCustomerIds() {
     if (customers.length === 0) {
@@ -72,9 +87,23 @@ function validateQty(): boolean {
 }
 
 
+function clearAllFields(){
+    $('#cart-total').text("0.00");
+    $('#tbl-cart tbody tr').remove();
+    $('#place-order-qtyOnHand').val("");
+    $('#place-order-qty').val("");
+    $('#place-order-unitPrice').val("");
+    $('#place-order-description').val("");
+    $('#customerAddress').val("");
+    $('#customerName').val("");
+
+}
+
+
 $('#app-component .sidebar ul li a').click(function () {
     loadAllCustomerIds();
     loadAllItemCodes();
+    clearAllFields();
 });
 
 
@@ -146,6 +175,56 @@ $('#tbl-cart tbody').on('click','tr .btn-danger',(event:Event)=>{
     $('#cart-total').text(cartTotal.toFixed(2));
     $(event.target as any).parents('tr').remove();
 });
+
+
+$('#btn-place-order-submit').click(function (){
+    function validateFieldstoPerformPaymont(){
+        if($('#tbl-cart tbody').children().length==0){
+            alert('Add items to cart');
+            return false
+        }
+
+        if(($('#customerName').val()as string).trim()==""){
+            alert('select a customer');
+            return false;
+        }
+        return  true;
+    }
+    if(!validateFieldstoPerformPaymont()){
+        return;
+    }
+
+    submitOrder();
+
+});
+
+
+async function submitOrder(){
+    let ordernumber=parseInt(orders[orders.length-1]['id'].slice(1,4))+1
+    let orderId='D'+('00' + ordernumber).slice(-3);
+
+    let customerId=<string>$('.customers-select').val();
+    let orderDate=<string>$('#place-order-date').val();
+    let orderItems:Array<OrderItem>=[];
+
+
+    $('#tbl-cart tbody').children().each((index, element) => {
+        let itemCode=$(element).children('td').eq(1).text();
+        let qty=+$(element).children('td').eq(5).text();
+        let unitPrice=+$(element).children('td').eq(4).text();
+
+        console.log(itemCode,qty,unitPrice);
+        orderItems.push(new OrderItem(orderId,itemCode,qty,unitPrice));
+    });
+
+    try {
+        await saveOrder(new OrderInformaion(orderId, orderDate, customerId, orderItems));
+        alert('Order successfully added');
+        clearAllFields();
+    }catch (e) {
+        alert('Something went wrong try again');
+    }
+}
 
 
 

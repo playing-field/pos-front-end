@@ -33,11 +33,11 @@ export let items: Array<Item> = [];
 
 } */
 
-let loaded = false;
+export let itemloaded = false;
 
 export function getAllItems(): Promise<Array<Item>> {
     return new Promise((resolve, reject) => {
-        if (!loaded) {
+        if (!itemloaded) {
             /* let http = new XMLHttpRequest();
 
             http.onreadystatechange = function () {
@@ -77,7 +77,7 @@ export function getAllItems(): Promise<Array<Item>> {
 
             }).then((data)=>{
                 items=data;
-                loaded=true;
+                itemloaded=true;
                 resolve(items);
             }).catch(()=>{
                 reject();

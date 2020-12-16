@@ -27,13 +27,7 @@
                         <div class="form-group">
                             <label>Customer ID</label>
                             <select class="form-control customers-select">
-                                <option selected="selected">C001</option>
-                                <option>C002</option>
-                                <option>C003</option>
-                                <option>C004</option>
-                                <option>C005</option>
-                                <option>C006</option>
-                                <option>C007</option>
+
                             </select>
                         </div>
                     </div>
@@ -58,7 +52,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                 </div>
-                                <input type="text" class="form-control">
+                                <input id="place-order-date" type="text" class="form-control" disabled>
                             </div>
                             <!-- /.input group -->
                         </div>
@@ -138,7 +132,7 @@
 
             <div class="col col-lg-4">
                 <div class="mt-4">
-                    <button type="button" class="btn btn-success btn-flat"><i class="far fa-credit-card"></i> Submit
+                    <button id="btn-place-order-submit" type="button" class="btn btn-success btn-flat"><i class="far fa-credit-card"></i> Submit
                         Payment
                     </button>
                 </div>
